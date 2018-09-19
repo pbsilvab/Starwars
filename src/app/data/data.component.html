@@ -1,0 +1,31 @@
+<div *ngIf="data">
+  <div class="backing">
+    <div text-center class="bg-top">
+      <h4 style="text-transform: uppercase; font-weight: bold;">
+        STARWARS -  {{data.serviceName}}
+      </h4>
+      <div *ngIf="data" class="datamanage">
+        <br>
+        <h5>
+          <b>Cantidad: {{data.cantidad}} </b></h5>
+        <br>
+      </div>
+    </div>
+    <div *ngIf="data">
+      <div class="extra" *ngFor="let naves of data.result; let i = index">
+        <div class="naves">
+          <p class="nombre">{{naves.name}} | {{naves.length}}
+            <span class="mini"> feets</span>
+          </p>
+          <ion-list>
+            <ion-item class="model">
+              <b>Model:</b> {{naves.model}}
+            </ion-item>
+            <ion-item class="model">
+              <b>Man.:</b> {{naves.manufacturer}}
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+  </div>
+</div>

@@ -1,17 +1,37 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Contact
-    </ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="logo-ionic" slot="start"></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+  <div class="backing">
+
+    <div text-center class="bg-top">
+      FILMS
+      <div *ngIf="datos" class="datamanage">
+        <br>
+        <h5>
+          <b>Cantidad: </b>{{datos.cantidad}}</h5>
+        <br>
+      </div>
+    </div>
+
+    <div *ngIf="service.finalizarConsultaPersonajes && datos">
+      <div class="extra" *ngFor="let personajes of datos.result; let i = index">
+        <div class="naves">
+          <p class="nombre">{{personajes.title}} |
+            <span class="mini"> {{personajes.director}}</span>
+          </p>
+          <div>
+            <ion-list>
+              <ion-item class="model" *ngFor="let caracter of personajes.characters; let in = index">
+                <ion-label>{{ service.peopleArr[caracter].name }}</ion-label>
+                <button color="dark" ion-button outline end (click)="displayInfo(service.peopleArr[caracter])">
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
+              </ion-item>
+            </ion-list> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
